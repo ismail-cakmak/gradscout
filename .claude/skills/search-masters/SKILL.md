@@ -9,6 +9,7 @@ disable-model-invocation: true
 * Take your time to do this thoroughly.
 * Quality is more important than speed.
 * Do not skip validation steps.
+* **Autonomy:** Once the pipeline is running (after Step 2 intake is confirmed), do NOT stop to ask the user "should I proceed?" or "would you like me to start?". Just execute the next step immediately. The only time you should pause for user input is during Step 2 (Intake) and Step 1.5 (Criteria Update). Everything else is fully autonomous.
 
 ## Workflow: Autonomous Master's Search
 
@@ -39,7 +40,11 @@ Check if `.state/pipeline-state.md` exists.
 - If NO: This is a **fresh run**. Create it. Add Phase 1 checkboxes (`[ ] Intake`, `[ ] Context Generation`, `[ ] Baseline Search`). Skip Step 1.5 and go to Step 2.
 - If YES: Read the file and also read `master-context.md`.
   - If the user's message is about **updating criteria** (adding/removing keywords, countries, schema fields, etc.), go to **Step 1.5**.
-  - Otherwise, find the first empty `[ ]` checkbox. This is your exact starting position. Ignore all steps above it.
+  - Otherwise, determine which phase to resume:
+    1. If there are ANY unchecked `[ ]` items in **Phase 2**, resume from Step 4 (Discovery). **Do NOT skip ahead to Phase 3 even if Phase 3 items exist.**
+    2. If all Phase 2 items are checked and there are unchecked `[ ]` items in **Phase 3**, resume from Step 5 (Extraction).
+    3. If all Phase 2 and Phase 3 items are checked, go to Step 6 (Compilation).
+    4. If Phase 1 items are unchecked, resume from the corresponding step.
 
 
 ### Step 1.5: Criteria Update Flow
@@ -108,9 +113,13 @@ Look at the Phase 2 checklist in `.state/pipeline-state.md`.
 2. Delegate the university to the `program-finder` subagent. **Wait for it to fully complete** before starting the next one.
 3. Pass the University Name, Interest Keywords, and Negative Keywords. Instruct the agent to be thorough in its extraction.
 4. Once the agent returns, compile the JSON links into `.state/discovery/universityname.json`, check off `[x]` (or [FAILED] if it fails) in the state file, and then dispatch the next university.
+5. **CRITICAL: Do NOT create Phase 3 entries or start any extraction work during this step. You must complete ALL Phase 2 universities before moving to Step 5. Keep looping through unchecked Phase 2 universities until every single one is `[x]` or `[FAILED]`.**
 
 ### Step 5: Phase 3 Setup & Delegation (The Analyzers)
-1. Read the Descriptive JSON Schema and the list of discovered program URLs.
+
+**Prerequisite:** Verify that ALL Phase 2 items are `[x]` or `[FAILED]`. If any Phase 2 item is still `[ ]`, go back to Step 4. Do NOT start Phase 3 until Phase 2 is fully complete.
+
+1. Read the Descriptive JSON Schema and the list of discovered program URLs from ALL `.state/discovery/*.json` files.
 2. Update .state/pipeline-state.md to create a "Phase 3: Extraction" section, listing every program URL with an empty [ ] box next to it. This is your queue for the analyzers.
 3. **Sequential Execution:** You MUST invoke the `Agent` tool for **one unchecked program at a time**. All subagents share the same browser instance, so parallel execution causes tab conflicts.
 4. Delegate the program to the `program-analyzer` subagent. Pass the URL, Program Name, and the Descriptive JSON Schema. Instruct the agent to be thorough in its extraction.
