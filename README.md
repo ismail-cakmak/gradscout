@@ -25,6 +25,7 @@ If your Interest Keywords are `CS, AI, ML` and your Negative Keywords are `Biolo
 * *MSc Computer Science* -> **Kept** * *MSc Data Engineering* -> **Kept** * *MSc Management and Data Science* -> **Rejected** (Triggers the "Management" negative keyword)
 * *MSc Computational Biology* -> **Rejected** (Triggers the "Biology" negative keyword)
 
+
 ## Prerequisites
 
 To run this pipeline, you need the following installed on your system:
