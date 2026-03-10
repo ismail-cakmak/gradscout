@@ -43,10 +43,10 @@ mkdir Masters_Search && cd Masters_Search
 ```
 
 **2. Enable Browser Automation (MCP)**
-Give Claude Code the ability to browse the web using the official Puppeteer MCP server:
+Give Claude Code the ability to browse the web using the official Playwright MCP server:
 
 ```bash
-claude mcp add puppeteer -- npx -y @modelcontextprotocol/server-puppeteer
+claude mcp add playwright -- npx -y @playwright/mcp
 
 ```
 
