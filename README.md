@@ -10,10 +10,10 @@ Tell it your countries, your interests, your criteria — and it autonomously br
 
 ## Usage
 
-Open Claude Code in the project directory and just talk to it:
+Open Claude Code in the project directory and run the slash command:
 
 ```
-You: Find master programs
+You: /search-masters
 
 Claude: I'll help you search for master's programs. Let me ask a few questions:
 
@@ -125,7 +125,7 @@ pip install pandas openpyxl
 ```bash
 claude
 ```
-Then just say: *"Find master programs"*
+Then type: `/search-masters`
 
 ---
 
