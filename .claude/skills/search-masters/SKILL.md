@@ -18,10 +18,13 @@ Execute these steps strictly in sequence. You must manage state using `.state/pi
 ### Step 0: Global Dependency Validation
 *(Execute every time before Step 1)*
 
-1. **Strict MCP Tool Check:** You MUST run `list_tools` and verify that tools provided by the `playwright` MCP server (e.g., `browser_navigate`) are active.
-   - **CRITICAL:** If you see `chrome-devtools`, `computer`, or `Google Search` but NOT `browser_navigate`, you must STOP.
-   - **Action:** Warn the user: "⚠️ The Playwright MCP is missing. The subagents will be slow and expensive. Please install Playwright MCP: `claude mcp add playwright -- npx -y @playwright/mcp` and restart."
-   - **Do not proceed** until you see the `browser_` prefix in your tool list.
+1. **Playwright CLI Check:** Run:
+   ```bash
+   playwright-cli --version
+   ```
+   - **If it fails:** Try `npx playwright-cli --version`.
+   - **If both fail:** Warn the user: "⚠️ The Playwright CLI is missing. Please install it: `npm install -g @playwright/cli` or use `npx @playwright/cli install --skills`."
+   - **Do not proceed** until the CLI is confirmed working.
    
 2. **Check Python Environment:** Use the `bash` tool to run: 
    `python3 -c "import os, json, pandas, openpyxl; print('Dependencies OK')"`
@@ -32,7 +35,13 @@ Execute these steps strictly in sequence. You must manage state using `.state/pi
 3. **Check Directory Structure:** Ensure `.state/discovery` and `.state/extraction` exist.
    - **Action:** If missing, run `mkdir -p .state/discovery .state/extraction`.
 
-4. **Proceed:** Only if all three checks pass, move to Step 1.
+4. **Launch Visual Dashboard:** Open the Playwright CLI visual dashboard so the user can observe all parallel browser sessions in real time:
+   ```bash
+   playwright-cli show &
+   ```
+   This runs in the background and displays a live view of every running session. The user can watch the agents work and even step in if needed.
+
+5. **Proceed:** Only if all checks pass, move to Step 1.
 
 
 ### Step 1: State Recovery & Initialization
@@ -100,30 +109,60 @@ Check if `.state/pipeline-state.md` exists.
 
 (Execute only if unchecked)
 
-1. Use your built-in web search or playwright MCP tools to find a baseline list of universities matching the user's target countries.
+1. Use your built-in web search or `playwright-cli` to find a baseline list of universities matching the user's target countries.
 
 2. Strict Ranking Filter: You must evaluate the Rank Cutoff for these universities using ONLY the QS World University Rankings or Times Higher Education (THE). Ignore national rankings, ARWU, US News, etc. If a university falls outside the cutoff on both QS and THE, discard it.
 
 3. Update .state/pipeline-state.md to create a "Phase 2: Discovery" section. List every single qualifying university with an empty [ ] checkbox.
 
-### Step 4: Phase 2 Delegation (The Finders)
+### Step 4: Phase 2 Delegation (The Finders) — PARALLEL
 
 Look at the Phase 2 checklist in `.state/pipeline-state.md`.
-1. **Sequential Execution:** You MUST invoke the `Agent` tool for **one unchecked university at a time**. All subagents share the same browser instance via the MCP server, so parallel execution causes tab conflicts and race conditions.
-2. Delegate the university to the `program-finder` subagent. **Wait for it to fully complete** before starting the next one.
-3. Pass the University Name, Interest Keywords, and Negative Keywords. Instruct the agent to be thorough in its extraction.
-4. Once the agent returns, compile the JSON links into `.state/discovery/universityname.json`, check off `[x]` (or [FAILED] if it fails) in the state file, and then dispatch the next university.
-5. **CRITICAL: Do NOT create Phase 3 entries or start any extraction work during this step. You must complete ALL Phase 2 universities before moving to Step 5. Keep looping through unchecked Phase 2 universities until every single one is `[x]` or `[FAILED]`.**
 
-### Step 5: Phase 3 Setup & Delegation (The Analyzers)
+1. **Parallel Execution:** You may dispatch **multiple `program-finder` subagents in parallel**. Each subagent gets a unique session name to ensure full browser isolation.
+
+2. **Session Naming:** For each university, generate a session name: `uni-<sanitized-name>` (e.g., `uni-tum`, `uni-eth-zurich`, `uni-oxford`). Sanitize by lowercasing and replacing spaces/special chars with hyphens.
+
+3. **Dispatch:** For each unchecked university, invoke the `Agent` tool with the `program-finder` subagent. In the task description, include:
+   - The University Name and its website URL
+   - The Interest Keywords and Negative Keywords
+   - **The session name**, e.g.: "Your SESSION_NAME is `uni-tum`. Use `-s=uni-tum` for every playwright-cli command."
+
+4. **Batching:** Dispatch universities in batches (e.g., 3–5 at a time) to avoid overwhelming system resources. Wait for the batch to complete before dispatching the next batch.
+
+5. **Collect Results:** Once each agent returns, compile the JSON links into `.state/discovery/universityname.json`, and check off `[x]` (or `[FAILED]` if it fails) in the state file.
+
+6. **Cleanup:** After each batch completes, run:
+   ```bash
+   playwright-cli close-all
+   ```
+   This ensures no stale browser sessions linger between batches.
+
+7. **CRITICAL: Do NOT create Phase 3 entries or start any extraction work during this step. Complete ALL Phase 2 universities before moving to Step 5.**
+
+### Step 5: Phase 3 Setup & Delegation (The Analyzers) — PARALLEL
 
 **Prerequisite:** Verify that ALL Phase 2 items are `[x]` or `[FAILED]`. If any Phase 2 item is still `[ ]`, go back to Step 4. Do NOT start Phase 3 until Phase 2 is fully complete.
 
 1. Read the Descriptive JSON Schema and the list of discovered program URLs from ALL `.state/discovery/*.json` files.
 2. Update .state/pipeline-state.md to create a "Phase 3: Extraction" section, listing every program URL with an empty [ ] box next to it. This is your queue for the analyzers.
-3. **Sequential Execution:** You MUST invoke the `Agent` tool for **one unchecked program at a time**. All subagents share the same browser instance, so parallel execution causes tab conflicts.
-4. Delegate the program to the `program-analyzer` subagent. Pass the URL, Program Name, and the Descriptive JSON Schema. Instruct the agent to be thorough in its extraction.
-5. **Wait for the agent to fully complete** before dispatching the next one. Check off `[x]` (or [FAILED] if it fails) in the state file and proceed to the next program until all extractions are complete.
+
+3. **Parallel Execution:** You may dispatch **multiple `program-analyzer` subagents in parallel**. Each subagent gets a unique session name.
+
+4. **Session Naming:** For each program, generate a session name: `prog-<sanitized-uni>-<sanitized-program>` (e.g., `prog-tum-cs`, `prog-eth-ml`). Keep it short but unique.
+
+5. **Dispatch:** For each unchecked program, invoke the `Agent` tool with the `program-analyzer` subagent. Include:
+   - The URL, Program Name, University Name, and the Descriptive JSON Schema
+   - **The session name**, e.g.: "Your SESSION_NAME is `prog-tum-cs`. Use `-s=prog-tum-cs` for every playwright-cli command."
+
+6. **Batching:** Dispatch programs in batches (e.g., 3–5 at a time). Wait for the batch to complete before the next batch.
+
+7. **Collect Results:** Check off `[x]` (or `[FAILED]`) in the state file after each agent completes.
+
+8. **Cleanup:** After each batch:
+   ```bash
+   playwright-cli close-all
+   ```
 
 
 ### Step 6: Compilation
@@ -133,17 +172,25 @@ Once all Phase 3 boxes are checked, run the terminal command python compile_resu
 
 ## Troubleshooting
 
-### MCP Connection Failed
+### Playwright CLI Not Found
 
-If you see "Connection refused" or cannot access browser tools:
+If `playwright-cli` is not found:
+1. Try `npx playwright-cli --version` to use the npx fallback.
+2. If that also fails, ask the user to install: `npm install -g @playwright/cli`.
 
-1. Verify the Playwright MCP server is running by checking your extension settings.
-2. Confirm the Node.js environment is active.
-3. Do not fail the entire pipeline; pause and ask the user to restart the MCP server.
+### Stale / Zombie Browser Sessions
+
+If browsers become unresponsive or sessions are left open from a previous run:
+```bash
+playwright-cli list        # see what's running
+playwright-cli close-all   # graceful shutdown
+playwright-cli kill-all    # force kill if close-all fails
+```
 
 ### Subagent Timeout or Crash
 
 If a program-analyzer or program-finder subagent fails to return data or throws a critical error:
 
 1. Note the failure in .state/pipeline-state.md (e.g., mark as [FAILED]).
-2. Do not get stuck in an infinite retry loop. Move on to the next empty [ ] checkbox in the queue.
+2. Run `playwright-cli close-all` to clean up any orphaned sessions.
+3. Do not get stuck in an infinite retry loop. Move on to the next empty [ ] checkbox in the queue.

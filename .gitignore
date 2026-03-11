@@ -126,4 +126,4 @@ path/
 .state/discovery/*
 !.state/discovery/.gitkeep
 .state/extraction/*
-!.state/extraction/.gitkeep
+!.state/extraction/.gitkeep.playwright-cli/
