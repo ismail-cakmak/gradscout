@@ -18,7 +18,12 @@ Execute these steps strictly in sequence. You must manage state using `.state/pi
 ### Step 0: Global Dependency Validation
 *(Execute every time before Step 1)*
 
-1. **Playwright CLI Check:** Run:
+1. **Clean Up Stale Sessions:** Kill any leftover browser sessions from a previous run:
+   ```bash
+   playwright-cli close-all 2>/dev/null || true
+   ```
+
+2. **Playwright CLI Check:** Run:
    ```bash
    playwright-cli --version
    ```
@@ -90,10 +95,12 @@ Check if `.state/pipeline-state.md` exists.
 2. Present this default extraction schema, noting that the values contain instructions and examples for the subagent:
    ```json
    {
+     "program_url": "Instruction: The direct URL to the main program overview page. Example: 'https://www.tum.de/msc-computer-science'",
      "program_name": "Instruction: The official name of the degree. Example: 'MSc Computer Science'",
      "application_deadline": "Instruction: The exact date applications close for international students. Example: '2025-05-31'",
      "tuition_fee": "Instruction: The total cost of the entire program. Example: '1500 EUR/semester' or 'Free'",
-     "housing_info": "Instruction: Indicate if housing is guaranteed and average rent. Example: 'No guarantee, ~600 EUR/month'"
+     "housing_info": "Instruction: Indicate if housing is guaranteed and average rent. Example: 'No guarantee, ~600 EUR/month'",
+     "scholarship_info": "Instruction: Available scholarships, eligibility, AND their website links. Example: 'Merit scholarship: 50% tuition waiver (https://tum.de/scholarships). Also: diversity scholarship.'"
    }
     ```
 

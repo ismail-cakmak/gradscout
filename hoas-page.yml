@@ -1,0 +1,861 @@
+- generic [active] [ref=e1]:
+  - dialog "This website uses cookies" [ref=e2]:
+    - generic [ref=e3]:
+      - tabpanel "Consent" [ref=e5]:
+        - generic [ref=e7]:
+          - heading "This website uses cookies" [level=2] [ref=e8]
+          - generic [ref=e9]: We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
+        - generic [ref=e10]:
+          - group "Consent Selection" [ref=e16]:
+            - generic [ref=e17]: Consent Selection
+            - generic [ref=e18]:
+              - generic [ref=e19]:
+                - strong [ref=e21]: Necessary
+                - generic [ref=e22]:
+                  - checkbox "Necessary" [checked] [disabled]
+              - generic [ref=e23]:
+                - strong [ref=e25] [cursor=pointer]: Preferences
+                - checkbox "Preferences" [ref=e27] [cursor=pointer]
+              - generic [ref=e28]:
+                - strong [ref=e30] [cursor=pointer]: Statistics
+                - checkbox "Statistics" [ref=e32] [cursor=pointer]
+              - generic [ref=e33]:
+                - strong [ref=e35] [cursor=pointer]: Marketing
+                - checkbox "Marketing" [ref=e37] [cursor=pointer]
+          - link "Show details →" [ref=e39] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=e43]:
+        - button "Allow all" [ref=e44] [cursor=pointer]
+        - button "Allow selection" [ref=e45] [cursor=pointer]
+        - button "Only required cookies" [ref=e46] [cursor=pointer]
+  - link "Skip to content" [ref=e47] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e49]:
+    - banner [ref=e50]:
+      - generic [ref=e52]:
+        - link "Hoas to frontpage" [ref=e55] [cursor=pointer]:
+          - /url: https://hoas.fi/en/
+          - img [ref=e57]
+        - button "Menu" [ref=e66] [cursor=pointer]:
+          - img [ref=e68]
+          - generic [ref=e72]: Menu
+        - navigation "Päävalikon kielivalikko" [ref=e74]:
+          - list [ref=e76]:
+            - listitem [ref=e77]:
+              - link "Favourites" [ref=e78] [cursor=pointer]:
+                - /url: https://hoas.fi/en/favourites/
+                - text: Favourites
+                - img [ref=e80]
+            - listitem [ref=e82]:
+              - link "Housing application" [ref=e83] [cursor=pointer]:
+                - /url: https://hoas.fi/en/housing-application/
+                - text: Housing application
+                - img [ref=e85]
+            - listitem [ref=e92]:
+              - link "Online services" [ref=e93] [cursor=pointer]:
+                - /url: https://hoas.fi/en/online-services/
+                - text: Online services
+                - img [ref=e95]
+            - listitem [ref=e98]:
+              - button "Search the site" [ref=e99] [cursor=pointer]:
+                - text: Search the site
+                - img [ref=e101]
+            - listitem [ref=e103]:
+              - link "På Svenska" [ref=e104] [cursor=pointer]:
+                - /url: https://hoas.fi/sv/
+            - listitem [ref=e105]:
+              - link "Suomeksi" [ref=e106] [cursor=pointer]:
+                - /url: https://hoas.fi/
+    - main [ref=e107]:
+      - article "Sivun pääsisältö" [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e112]:
+            - heading "Easiest and the most comfortable student living" [level=1] [ref=e113]
+            - generic [ref=e115]:
+              - generic [ref=e117]:
+                - generic [ref=e118]: Search housing
+                - generic [ref=e119]:
+                  - log [ref=e121]
+                  - generic [ref=e122]:
+                    - img [ref=e125]
+                    - generic [ref=e127]:
+                      - generic [ref=e128]: Select from the menu or search by keyword
+                      - combobox "Select from the menu or search by keyword" [ref=e130]
+                    - img [ref=e133]
+              - group [ref=e136]:
+                - generic [ref=e137]: Apartments
+                - generic [ref=e138]:
+                  - button "Room" [ref=e139] [cursor=pointer]
+                  - button "1rm" [ref=e140] [cursor=pointer]
+                  - button "2rm" [ref=e141] [cursor=pointer]
+                  - button "3rm" [ref=e142] [cursor=pointer]
+                  - button "Exchange student" [ref=e143] [cursor=pointer]
+              - link "Show matching results (126pcs)" [ref=e145] [cursor=pointer]:
+                - /url: https://hoas.fi/en/housing
+            - generic [ref=e146]:
+              - heading "Foundation for student housing in the Helsinki region" [level=2] [ref=e147]
+              - generic [ref=e148]: Hoas offers affordable student housing close to educational intitutions in Helsinki, Espoo, Vantaa and Kauniainen. We are a non-profit foundation here to support students, working in collaboration with the student unions of the University of Helsinki and Aalto University, along with several other higher-education student unions.
+          - generic [ref=e151]:
+            - generic [ref=e153]:
+              - heading "How to apply for housing at Hoas?" [level=2] [ref=e154]
+              - generic [ref=e155]:
+                - button "Move backward in the carousel" [disabled] [ref=e156]:
+                  - img [ref=e158]
+                - button "Move forward in the carousel" [ref=e160] [cursor=pointer]:
+                  - img [ref=e162]
+            - generic [ref=e166]:
+              - generic [ref=e168]:
+                - generic [ref=e169]: "1"
+                - heading "Studies" [level=3] [ref=e170]
+                - paragraph [ref=e172]: Apply for housing as soon as you have been accepted to an educational institution in the Helsinki metropolitan area. Your studies must be full-time and lead to a degree.
+              - generic [ref=e174]:
+                - generic [ref=e175]: "2"
+                - heading "Explore the options" [level=3] [ref=e176]
+                - paragraph [ref=e178]:
+                  - text: Explore Hoas
+                  - link "properties" [ref=e179] [cursor=pointer]:
+                    - /url: https://hoas.fi/en/housing/
+                  - text: and the
+                  - link "areas" [ref=e180] [cursor=pointer]:
+                    - /url: https://hoas.fi/en/areas/
+                  - text: where they are located. Good public transport makes it easy to get around.
+              - generic [ref=e182]:
+                - generic [ref=e183]: "3"
+                - heading "Submit a housing application" [level=3] [ref=e184]
+                - paragraph [ref=e186]:
+                  - text: Fill in the
+                  - link "application" [ref=e187] [cursor=pointer]:
+                    - /url: https://hoas.fi/en/housing-application/
+                  - text: carefully. You will be asked, for example, how much rent you are willing to pay per month.
+              - generic [ref=e189]:
+                - generic [ref=e190]: "4"
+                - heading "Keep your application up to date" [level=3] [ref=e191]
+                - paragraph [ref=e193]: We recommend updating your housing application about once a month.
+              - generic [ref=e195]:
+                - generic [ref=e196]: "5"
+                - heading "When a suitable apartment becomes available" [level=3] [ref=e197]
+                - paragraph [ref=e199]: When an apartment that matches your application becomes available, we can offer it to you. Waiting times vary from a few weeks to over a year.
+              - generic [ref=e201]:
+                - generic [ref=e202]: "6"
+                - heading "Read the instructions" [level=3] [ref=e203]
+                - paragraph [ref=e205]:
+                  - text: "Read the instructions for a successful housing application:"
+                  - link "How to apply for a Hoas apartment" [ref=e206] [cursor=pointer]:
+                    - /url: https://hoas.fi/en/applicants/applying-for-an-apartment/how-to-apply/
+          - generic [ref=e209]:
+            - heading "Quick links" [level=2] [ref=e210]
+            - generic [ref=e211]:
+              - link "Apply for housing" [ref=e214] [cursor=pointer]:
+                - /url: https://hoas.fi/en/housing-application/
+                - img [ref=e217]
+                - generic [ref=e224]: Apply for housing
+              - link "Contact details and opening hours" [ref=e227] [cursor=pointer]:
+                - /url: https://hoas.fi/en/contact/contact-details-and-opening-hours/
+                - img [ref=e230]
+                - generic [ref=e238]: Contact details and opening hours
+              - link "Exchange Students" [ref=e241] [cursor=pointer]:
+                - /url: https://hoas.fi/en/applicants/exchange-students/
+                - img [ref=e244]
+                - generic [ref=e250]: Exchange Students
+              - link "For applicants" [ref=e253] [cursor=pointer]:
+                - /url: https://hoas.fi/en/applicants/
+                - img [ref=e256]
+                - generic [ref=e263]: For applicants
+              - link "For tenants" [ref=e266] [cursor=pointer]:
+                - /url: https://hoas.fi/en/tenants/
+                - img [ref=e269]
+                - generic [ref=e273]: For tenants
+              - link "Sustainability" [ref=e276] [cursor=pointer]:
+                - /url: https://hoas.fi/en/hoas/sustainability/
+                - img [ref=e279]
+                - generic [ref=e281]: Sustainability
+              - link "About us" [ref=e284] [cursor=pointer]:
+                - /url: https://hoas.fi/en/hoas/about-us/
+                - img [ref=e287]
+                - generic [ref=e299]: About us
+          - generic [ref=e305]:
+            - generic [ref=e306]:
+              - heading "Are you roommate material?" [level=2] [ref=e307]
+              - paragraph [ref=e308]: Shared apartments offer affordable rent, community living, and shared cleaning responsibilities. Could shared living be right for you?
+            - link "Room in a shared apartment" [ref=e309] [cursor=pointer]:
+              - /url: https://hoas.fi/en/applicants/apartment-types/room-in-a-shared-apartment/
+              - generic [ref=e310]: Room in a shared apartment
+          - generic [ref=e316]:
+            - generic [ref=e317]:
+              - heading "Which area would suit you best?" [level=2] [ref=e318]
+              - paragraph [ref=e319]: Do you enjoy the vibrant city life or the tranquility of nature? Take a test and find out which area best suits your lifestyle.
+            - link "Find out now" [ref=e320] [cursor=pointer]:
+              - /url: https://hoas.fi/en/area-widget/
+              - generic [ref=e321]: Find out now
+          - generic [ref=e324]:
+            - generic [ref=e325]:
+              - heading "New student homes in Niittykumpu Espoo" [level=2] [ref=e326]
+              - paragraph [ref=e327]: 272 modern homes near the metro station – available this spring. Apply now!
+            - link "See the apartments and apply" [ref=e328] [cursor=pointer]:
+              - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/
+              - generic [ref=e329]: See the apartments and apply
+          - generic [ref=e331]:
+            - generic [ref=e333]:
+              - generic [ref=e334]:
+                - heading "Available now" [level=3] [ref=e335]
+                - paragraph [ref=e336]: These apartments are looking for a tenant. Add the apartment you want to your application. You can also add an apartment to an existing application when you log in to edit it
+              - generic [ref=e337]:
+                - button "Move backward in the carousel" [disabled] [ref=e338]:
+                  - img [ref=e340]
+                - button "Move forward in the carousel" [ref=e342] [cursor=pointer]:
+                  - img [ref=e344]
+            - generic [ref=e348]:
+              - generic [ref=e349]:
+                - generic [ref=e350]: Available from 1.5.2026
+                - img "Timpurinkuja 1 A 016, two-room apartment" [ref=e353]
+                - generic [ref=e354]:
+                  - button "Timpurinkuja 1 A 016 Kaksio/2 rooms" [ref=e355] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e356]: Timpurinkuja 1 A 016 Kaksio/2 rooms
+                  - 'link "Timpurinkuja 1 A 016, two-room apartment Leppävaara-Vermonniitty, Espoo 1h+tpk, 55m2 Rent: 868€" [ref=e357] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/timpurinkuja-1/229094-kaksio-2-rooms/
+                    - heading "Timpurinkuja 1 A 016, two-room apartment" [level=6] [ref=e358]
+                    - generic [ref=e359]:
+                      - paragraph [ref=e360]: Leppävaara-Vermonniitty, Espoo
+                      - paragraph [ref=e361]: 1h+tpk, 55m2
+                      - paragraph [ref=e362]: "Rent: 868€"
+              - generic [ref=e363]:
+                - generic [ref=e364]: Available from 1.5.2026
+                - img "Tuuliniitty 1 A 026, studio" [ref=e367]
+                - generic [ref=e368]:
+                  - button "Tuuliniitty 1 A 026 Yksiö/Studio" [ref=e369] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e370]: Tuuliniitty 1 A 026 Yksiö/Studio
+                  - 'link "Tuuliniitty 1 A 026, studio Niittykumpu-Tapiola, Espoo 1h+kt, 27m2 Rent: 694€" [ref=e371] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/tuuliniitty-1/229202-yksio-studio/
+                    - heading "Tuuliniitty 1 A 026, studio" [level=6] [ref=e372]
+                    - generic [ref=e373]:
+                      - paragraph [ref=e374]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e375]: 1h+kt, 27m2
+                      - paragraph [ref=e376]: "Rent: 694€"
+              - generic [ref=e377]:
+                - generic [ref=e378]: Available from 1.4.2026
+                - img "Tuuliniitty 1 A 106, studio" [ref=e381]
+                - generic [ref=e382]:
+                  - button "Tuuliniitty 1 A 106 Yksiö/Studio" [ref=e383] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e384]: Tuuliniitty 1 A 106 Yksiö/Studio
+                  - 'link "Tuuliniitty 1 A 106, studio Niittykumpu-Tapiola, Espoo 1h+kt, 22.5m2 Rent: 659€" [ref=e385] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/tuuliniitty-1/229282-yksio-studio/
+                    - heading "Tuuliniitty 1 A 106, studio" [level=6] [ref=e386]
+                    - generic [ref=e387]:
+                      - paragraph [ref=e388]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e389]: 1h+kt, 22.5m2
+                      - paragraph [ref=e390]: "Rent: 659€"
+              - generic [ref=e391]:
+                - generic [ref=e392]: Available from 1.4.2026
+                - img "Väinö Auerin Katu 13 A 009, two-room apartment" [ref=e395]
+                - generic [ref=e396]:
+                  - button "Väinö Auerin Katu 13 A 009 Kaksio/2 rooms" [ref=e397] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e398]: Väinö Auerin Katu 13 A 009 Kaksio/2 rooms
+                  - 'link "Väinö Auerin Katu 13 A 009, two-room apartment Koskela-Kumpula, Helsinki 1h+tpk, 57m2 Rent: 932€" [ref=e399] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/vaino-auerin-katu-13/229883-kaksio-2-rooms/
+                    - heading "Väinö Auerin Katu 13 A 009, two-room apartment" [level=6] [ref=e400]
+                    - generic [ref=e401]:
+                      - paragraph [ref=e402]: Koskela-Kumpula, Helsinki
+                      - paragraph [ref=e403]: 1h+tpk, 57m2
+                      - paragraph [ref=e404]: "Rent: 932€"
+              - generic [ref=e405]:
+                - generic [ref=e406]: Available from 1.4.2026
+                - img "Anna Sahlsténin katu 4 A 039, studio" [ref=e409]
+                - generic [ref=e410]:
+                  - button "Anna Sahlsténin katu 4 A 039 Yksiö/Studio" [ref=e411] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e412]: Anna Sahlsténin katu 4 A 039 Yksiö/Studio
+                  - 'link "Anna Sahlsténin katu 4 A 039, studio Leppävaara-Vermonniitty, Espoo 1h+kt, 26m2 Rent: 609€" [ref=e413] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/anna-sahlstenin-katu-4/219772-yksio-studio/
+                    - heading "Anna Sahlsténin katu 4 A 039, studio" [level=6] [ref=e414]
+                    - generic [ref=e415]:
+                      - paragraph [ref=e416]: Leppävaara-Vermonniitty, Espoo
+                      - paragraph [ref=e417]: 1h+kt, 26m2
+                      - paragraph [ref=e418]: "Rent: 609€"
+              - generic [ref=e419]:
+                - generic [ref=e420]: Available now
+                - img "Harustie 7 A 008, three-room apartment" [ref=e423]
+                - generic [ref=e424]:
+                  - button "Harustie 7 A 008 Kolmio+/3 rooms+" [ref=e425] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e426]: Harustie 7 A 008 Kolmio+/3 rooms+
+                  - 'link "Harustie 7 A 008, three-room apartment Rastila, Helsinki 3h+tpk, 68.5m2 Rent: 936€" [ref=e427] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/harustie-7/220541-kolmio-3-rooms/
+                    - heading "Harustie 7 A 008, three-room apartment" [level=6] [ref=e428]
+                    - generic [ref=e429]:
+                      - paragraph [ref=e430]: Rastila, Helsinki
+                      - paragraph [ref=e431]: 3h+tpk, 68.5m2
+                      - paragraph [ref=e432]: "Rent: 936€"
+              - generic [ref=e433]:
+                - generic [ref=e434]: Available from 1.4.2026
+                - img "Harustie 7 E 064, three-room apartment" [ref=e437]
+                - generic [ref=e438]:
+                  - button "Harustie 7 E 064 Kolmio+/3 rooms+" [ref=e439] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e440]: Harustie 7 E 064 Kolmio+/3 rooms+
+                  - 'link "Harustie 7 E 064, three-room apartment Rastila, Helsinki 3h+k, 74.5m2 Rent: 1029€" [ref=e441] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/harustie-7/220597-kolmio-3-rooms/
+                    - heading "Harustie 7 E 064, three-room apartment" [level=6] [ref=e442]
+                    - generic [ref=e443]:
+                      - paragraph [ref=e444]: Rastila, Helsinki
+                      - paragraph [ref=e445]: 3h+k, 74.5m2
+                      - paragraph [ref=e446]: "Rent: 1029€"
+              - generic [ref=e447]:
+                - generic [ref=e448]: Available from 1.5.2026
+                - img "Katajanokanranta 21 C 041, two-room apartment" [ref=e451]
+                - generic [ref=e452]:
+                  - button "Katajanokanranta 21 C 041 Kaksio/2 rooms" [ref=e453] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e454]: Katajanokanranta 21 C 041 Kaksio/2 rooms
+                  - 'link "Katajanokanranta 21 C 041, two-room apartment Katajanokka, Helsinki 1h+oh+k, 48m2 Rent: 1075€" [ref=e455] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/katajanokanranta-21/222550-kaksio-2-rooms/
+                    - heading "Katajanokanranta 21 C 041, two-room apartment" [level=6] [ref=e456]
+                    - generic [ref=e457]:
+                      - paragraph [ref=e458]: Katajanokka, Helsinki
+                      - paragraph [ref=e459]: 1h+oh+k, 48m2
+                      - paragraph [ref=e460]: "Rent: 1075€"
+              - generic [ref=e461]:
+                - generic [ref=e462]: Available from 1.4.2026
+                - img "Kilonportti 1 C 062, two-room apartment" [ref=e465]
+                - generic [ref=e466]:
+                  - button "Kilonportti 1 C 062 Kaksio/2 rooms" [ref=e467] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e468]: Kilonportti 1 C 062 Kaksio/2 rooms
+                  - 'link "Kilonportti 1 C 062, two-room apartment Kilo, Espoo 1h+oh+k, 68m2 Rent: 915€" [ref=e469] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/kilonportti-1/222833-kaksio-2-rooms/
+                    - heading "Kilonportti 1 C 062, two-room apartment" [level=6] [ref=e470]
+                    - generic [ref=e471]:
+                      - paragraph [ref=e472]: Kilo, Espoo
+                      - paragraph [ref=e473]: 1h+oh+k, 68m2
+                      - paragraph [ref=e474]: "Rent: 915€"
+              - generic [ref=e475]:
+                - generic [ref=e476]: Available from 1.4.2026
+                - img "Leppäsuonkatu 7 A 004, two-room apartment" [ref=e479]
+                - generic [ref=e480]:
+                  - button "Leppäsuonkatu 7 A 004 Kaksio/2 rooms" [ref=e481] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e482]: Leppäsuonkatu 7 A 004 Kaksio/2 rooms
+                  - 'link "Leppäsuonkatu 7 A 004, two-room apartment Kamppi, Helsinki 2h+kt, 38m2 Rent: 947€" [ref=e483] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/leppasuonkatu-7/223973-kaksio-2-rooms/
+                    - heading "Leppäsuonkatu 7 A 004, two-room apartment" [level=6] [ref=e484]
+                    - generic [ref=e485]:
+                      - paragraph [ref=e486]: Kamppi, Helsinki
+                      - paragraph [ref=e487]: 2h+kt, 38m2
+                      - paragraph [ref=e488]: "Rent: 947€"
+              - generic [ref=e489]:
+                - generic [ref=e490]: Available from 1.4.2026
+                - img "Leppäsuonkatu 7 A 011, two-room apartment" [ref=e493]
+                - generic [ref=e494]:
+                  - button "Leppäsuonkatu 7 A 011 Kaksio/2 rooms" [ref=e495] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e496]: Leppäsuonkatu 7 A 011 Kaksio/2 rooms
+                  - 'link "Leppäsuonkatu 7 A 011, two-room apartment Kamppi, Helsinki 2h+kt, 38m2 Rent: 957€" [ref=e497] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/leppasuonkatu-7/223980-kaksio-2-rooms/
+                    - heading "Leppäsuonkatu 7 A 011, two-room apartment" [level=6] [ref=e498]
+                    - generic [ref=e499]:
+                      - paragraph [ref=e500]: Kamppi, Helsinki
+                      - paragraph [ref=e501]: 2h+kt, 38m2
+                      - paragraph [ref=e502]: "Rent: 957€"
+              - generic [ref=e503]:
+                - generic [ref=e504]: Available from 1.4.2026
+                - img "Pietari Kalmin katu 1 A 019, two-room apartment" [ref=e507]
+                - generic [ref=e508]:
+                  - button "Pietari Kalmin katu 1 A 019 Kaksio/2 rooms" [ref=e509] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e510]: Pietari Kalmin katu 1 A 019 Kaksio/2 rooms
+                  - 'link "Pietari Kalmin katu 1 A 019, two-room apartment Koskela-Kumpula, Helsinki 1h+oh+kt, 45m2 Rent: 923€" [ref=e511] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/pietari-kalmin-katu-1/226211-kaksio-2-rooms/
+                    - heading "Pietari Kalmin katu 1 A 019, two-room apartment" [level=6] [ref=e512]
+                    - generic [ref=e513]:
+                      - paragraph [ref=e514]: Koskela-Kumpula, Helsinki
+                      - paragraph [ref=e515]: 1h+oh+kt, 45m2
+                      - paragraph [ref=e516]: "Rent: 923€"
+              - generic [ref=e517]:
+                - generic [ref=e518]: Available from 1.4.2026
+                - img "Retkeilijänkatu 11 A 100, studio" [ref=e521]
+                - generic [ref=e522]:
+                  - button "Retkeilijänkatu 11 A 100 Yksiö/Studio" [ref=e523] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e524]: Retkeilijänkatu 11 A 100 Yksiö/Studio
+                  - 'link "Retkeilijänkatu 11 A 100, studio Rastila, Helsinki 1h+kt, 47m2 Rent: 876€" [ref=e525] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/retkeilijankatu-11/227454-yksio-studio/
+                    - heading "Retkeilijänkatu 11 A 100, studio" [level=6] [ref=e526]
+                    - generic [ref=e527]:
+                      - paragraph [ref=e528]: Rastila, Helsinki
+                      - paragraph [ref=e529]: 1h+kt, 47m2
+                      - paragraph [ref=e530]: "Rent: 876€"
+              - generic [ref=e531]:
+                - generic [ref=e532]: Available from 1.4.2026
+                - img "Riihitontuntie 9 A 001, studio" [ref=e535]
+                - generic [ref=e536]:
+                  - button "Riihitontuntie 9 A 001 Yksiö/Studio" [ref=e537] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e538]: Riihitontuntie 9 A 001 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 A 001, studio Niittykumpu-Tapiola, Espoo 1h+kt, 26.5m2 Rent: 665€" [ref=e539] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/397291-yksio-studio/
+                    - heading "Riihitontuntie 9 A 001, studio" [level=6] [ref=e540]
+                    - generic [ref=e541]:
+                      - paragraph [ref=e542]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e543]: 1h+kt, 26.5m2
+                      - paragraph [ref=e544]: "Rent: 665€"
+              - generic [ref=e545]:
+                - generic [ref=e546]: Available from 1.4.2026
+                - img "Riihitontuntie 9 A 018, studio" [ref=e549]
+                - generic [ref=e550]:
+                  - button "Riihitontuntie 9 A 018 Yksiö/Studio" [ref=e551] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e552]: Riihitontuntie 9 A 018 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 A 018, studio Niittykumpu-Tapiola, Espoo 1h+kt, 25m2 Rent: 635€" [ref=e553] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/397347-yksio-studio/
+                    - heading "Riihitontuntie 9 A 018, studio" [level=6] [ref=e554]
+                    - generic [ref=e555]:
+                      - paragraph [ref=e556]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e557]: 1h+kt, 25m2
+                      - paragraph [ref=e558]: "Rent: 635€"
+              - generic [ref=e559]:
+                - generic [ref=e560]: Available from 1.4.2026
+                - img "Riihitontuntie 9 A 022, studio" [ref=e563]
+                - generic [ref=e564]:
+                  - button "Riihitontuntie 9 A 022 Yksiö/Studio" [ref=e565] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e566]: Riihitontuntie 9 A 022 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 A 022, studio Niittykumpu-Tapiola, Espoo 1h+kt, 24m2 Rent: 614€" [ref=e567] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/397363-yksio-studio/
+                    - heading "Riihitontuntie 9 A 022, studio" [level=6] [ref=e568]
+                    - generic [ref=e569]:
+                      - paragraph [ref=e570]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e571]: 1h+kt, 24m2
+                      - paragraph [ref=e572]: "Rent: 614€"
+              - generic [ref=e573]:
+                - generic [ref=e574]: Available from 1.4.2026
+                - img "Riihitontuntie 9 A 030, studio" [ref=e577]
+                - generic [ref=e578]:
+                  - button "Riihitontuntie 9 A 030 Yksiö/Studio" [ref=e579] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e580]: Riihitontuntie 9 A 030 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 A 030, studio Niittykumpu-Tapiola, Espoo 1h+kt, 27.5m2 Rent: 670€" [ref=e581] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/397395-yksio-studio/
+                    - heading "Riihitontuntie 9 A 030, studio" [level=6] [ref=e582]
+                    - generic [ref=e583]:
+                      - paragraph [ref=e584]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e585]: 1h+kt, 27.5m2
+                      - paragraph [ref=e586]: "Rent: 670€"
+              - generic [ref=e587]:
+                - generic [ref=e588]: Available from 1.4.2026
+                - img "Riihitontuntie 9 A 043, studio" [ref=e591]
+                - generic [ref=e592]:
+                  - button "Riihitontuntie 9 A 043 Yksiö/Studio" [ref=e593] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e594]: Riihitontuntie 9 A 043 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 A 043, studio Niittykumpu-Tapiola, Espoo 1h+kt, 24m2 Rent: 614€" [ref=e595] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/397439-yksio-studio/
+                    - heading "Riihitontuntie 9 A 043, studio" [level=6] [ref=e596]
+                    - generic [ref=e597]:
+                      - paragraph [ref=e598]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e599]: 1h+kt, 24m2
+                      - paragraph [ref=e600]: "Rent: 614€"
+              - generic [ref=e601]:
+                - generic [ref=e602]: Available from 1.4.2026
+                - img "Riihitontuntie 9 A 052, studio" [ref=e605]
+                - generic [ref=e606]:
+                  - button "Riihitontuntie 9 A 052 Yksiö/Studio" [ref=e607] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e608]: Riihitontuntie 9 A 052 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 A 052, studio Niittykumpu-Tapiola, Espoo 1h+kt, 27.5m2 Rent: 680€" [ref=e609] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/397475-yksio-studio/
+                    - heading "Riihitontuntie 9 A 052, studio" [level=6] [ref=e610]
+                    - generic [ref=e611]:
+                      - paragraph [ref=e612]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e613]: 1h+kt, 27.5m2
+                      - paragraph [ref=e614]: "Rent: 680€"
+              - generic [ref=e615]:
+                - generic [ref=e616]: Available from 1.4.2026
+                - img "Riihitontuntie 9 A 078, studio" [ref=e619]
+                - generic [ref=e620]:
+                  - button "Riihitontuntie 9 A 078 Yksiö/Studio" [ref=e621] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e622]: Riihitontuntie 9 A 078 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 A 078, studio Niittykumpu-Tapiola, Espoo 1h+kt, 26m2 Rent: 665€" [ref=e623] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/397571-yksio-studio/
+                    - heading "Riihitontuntie 9 A 078, studio" [level=6] [ref=e624]
+                    - generic [ref=e625]:
+                      - paragraph [ref=e626]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e627]: 1h+kt, 26m2
+                      - paragraph [ref=e628]: "Rent: 665€"
+              - generic [ref=e629]:
+                - generic [ref=e630]: Available from 1.4.2026
+                - img "Riihitontuntie 9 B 157, studio" [ref=e633]
+                - generic [ref=e634]:
+                  - button "Riihitontuntie 9 B 157 Yksiö/Studio" [ref=e635] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e636]: Riihitontuntie 9 B 157 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 B 157, studio Niittykumpu-Tapiola, Espoo 1h+kt, 24m2 Rent: 624€" [ref=e637] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/397899-yksio-studio/
+                    - heading "Riihitontuntie 9 B 157, studio" [level=6] [ref=e638]
+                    - generic [ref=e639]:
+                      - paragraph [ref=e640]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e641]: 1h+kt, 24m2
+                      - paragraph [ref=e642]: "Rent: 624€"
+              - generic [ref=e643]:
+                - generic [ref=e644]: Available from 1.4.2026
+                - img "Riihitontuntie 9 B 196, studio" [ref=e647]
+                - generic [ref=e648]:
+                  - button "Riihitontuntie 9 B 196 Yksiö/Studio" [ref=e649] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e650]: Riihitontuntie 9 B 196 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 B 196, studio Niittykumpu-Tapiola, Espoo 1h+kt, 26m2 Rent: 675€" [ref=e651] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/398043-yksio-studio/
+                    - heading "Riihitontuntie 9 B 196, studio" [level=6] [ref=e652]
+                    - generic [ref=e653]:
+                      - paragraph [ref=e654]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e655]: 1h+kt, 26m2
+                      - paragraph [ref=e656]: "Rent: 675€"
+              - generic [ref=e657]:
+                - generic [ref=e658]: Available from 1.4.2026
+                - img "Riihitontuntie 9 B 203, studio" [ref=e661]
+                - generic [ref=e662]:
+                  - button "Riihitontuntie 9 B 203 Yksiö/Studio" [ref=e663] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e664]: Riihitontuntie 9 B 203 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 B 203, studio Niittykumpu-Tapiola, Espoo 1h+kt, 33.5m2 Rent: 755€" [ref=e665] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/398071-yksio-studio/
+                    - heading "Riihitontuntie 9 B 203, studio" [level=6] [ref=e666]
+                    - generic [ref=e667]:
+                      - paragraph [ref=e668]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e669]: 1h+kt, 33.5m2
+                      - paragraph [ref=e670]: "Rent: 755€"
+              - generic [ref=e671]:
+                - generic [ref=e672]: Available from 1.4.2026
+                - img "Riihitontuntie 9 B 211, studio" [ref=e675]
+                - generic [ref=e676]:
+                  - button "Riihitontuntie 9 B 211 Yksiö/Studio" [ref=e677] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e678]: Riihitontuntie 9 B 211 Yksiö/Studio
+                  - 'link "Riihitontuntie 9 B 211, studio Niittykumpu-Tapiola, Espoo 1h+kt, 24.5m2 Rent: 645€" [ref=e679] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/riihitontuntie-9-11-3/398103-yksio-studio/
+                    - heading "Riihitontuntie 9 B 211, studio" [level=6] [ref=e680]
+                    - generic [ref=e681]:
+                      - paragraph [ref=e682]: Niittykumpu-Tapiola, Espoo
+                      - paragraph [ref=e683]: 1h+kt, 24.5m2
+                      - paragraph [ref=e684]: "Rent: 645€"
+              - generic [ref=e685]:
+                - generic [ref=e686]: Available now
+                - img "Välimerenkatu 5 B 095 2" [ref=e689]
+                - generic [ref=e690]:
+                  - button "Välimerenkatu 5 B 095 2" [ref=e691] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e692]: Välimerenkatu 5 B 095 2
+                  - 'link "Välimerenkatu 5 B 095 2 Jätkäsaari-Ruoholahti, Helsinki Rent: 495€" [ref=e693] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/valimerenkatu-5/247250-solu-room/
+                    - heading "Välimerenkatu 5 B 095 2" [level=6] [ref=e694]
+                    - generic [ref=e695]:
+                      - paragraph [ref=e696]: Jätkäsaari-Ruoholahti, Helsinki
+                      - paragraph [ref=e697]: "Rent: 495€"
+              - generic [ref=e698]:
+                - generic [ref=e699]: Available now
+                - img "Välimerenkatu 5 C 131 3" [ref=e702]
+                - generic [ref=e703]:
+                  - button "Välimerenkatu 5 C 131 3" [ref=e704] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e705]: Välimerenkatu 5 C 131 3
+                  - 'link "Välimerenkatu 5 C 131 3 Jätkäsaari-Ruoholahti, Helsinki Rent: 483€" [ref=e706] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/valimerenkatu-5/247324-solu-room/
+                    - heading "Välimerenkatu 5 C 131 3" [level=6] [ref=e707]
+                    - generic [ref=e708]:
+                      - paragraph [ref=e709]: Jätkäsaari-Ruoholahti, Helsinki
+                      - paragraph [ref=e710]: "Rent: 483€"
+              - generic [ref=e711]:
+                - generic [ref=e712]: Available now
+                - img "Välimerenkatu 5 C 132 1" [ref=e715]
+                - generic [ref=e716]:
+                  - button "Välimerenkatu 5 C 132 1" [ref=e717] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e718]: Välimerenkatu 5 C 132 1
+                  - 'link "Välimerenkatu 5 C 132 1 Jätkäsaari-Ruoholahti, Helsinki Rent: 483€" [ref=e719] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/valimerenkatu-5/247325-solu-room/
+                    - heading "Välimerenkatu 5 C 132 1" [level=6] [ref=e720]
+                    - generic [ref=e721]:
+                      - paragraph [ref=e722]: Jätkäsaari-Ruoholahti, Helsinki
+                      - paragraph [ref=e723]: "Rent: 483€"
+              - generic [ref=e724]:
+                - generic [ref=e725]: Available from 1.4.2026
+                - img "Harustie 7 F 081 1" [ref=e728]
+                - generic [ref=e729]:
+                  - button "Harustie 7 F 081 1" [ref=e730] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e731]: Harustie 7 F 081 1
+                  - 'link "Harustie 7 F 081 1 Rastila, Helsinki Rent: 358€" [ref=e732] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/harustie-7/232034-solu-room/
+                    - heading "Harustie 7 F 081 1" [level=6] [ref=e733]
+                    - generic [ref=e734]:
+                      - paragraph [ref=e735]: Rastila, Helsinki
+                      - paragraph [ref=e736]: "Rent: 358€"
+              - generic [ref=e737]:
+                - generic [ref=e738]: Available now
+                - img "Harustie 8 D 042 3" [ref=e741]
+                - generic [ref=e742]:
+                  - button "Harustie 8 D 042 3" [ref=e743] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e744]: Harustie 8 D 042 3
+                  - 'link "Harustie 8 D 042 3 Rastila, Helsinki Rent: 313€" [ref=e745] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/harustie-8/232164-solu-room/
+                    - heading "Harustie 8 D 042 3" [level=6] [ref=e746]
+                    - generic [ref=e747]:
+                      - paragraph [ref=e748]: Rastila, Helsinki
+                      - paragraph [ref=e749]: "Rent: 313€"
+              - generic [ref=e750]:
+                - generic [ref=e751]: Available now
+                - img "Pallaksentie 4 B 021 2" [ref=e754]
+                - generic [ref=e755]:
+                  - button "Pallaksentie 4 B 021 2" [ref=e756] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e757]: Pallaksentie 4 B 021 2
+                  - 'link "Pallaksentie 4 B 021 2 Mellunmäki, Helsinki Rent: 322€" [ref=e758] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/pallaksentie-4/240253-solu-room/
+                    - heading "Pallaksentie 4 B 021 2" [level=6] [ref=e759]
+                    - generic [ref=e760]:
+                      - paragraph [ref=e761]: Mellunmäki, Helsinki
+                      - paragraph [ref=e762]: "Rent: 322€"
+              - generic [ref=e763]:
+                - generic [ref=e764]: Available now
+                - img "Rekipellontie 15 B 005 2" [ref=e767]
+                - generic [ref=e768]:
+                  - button "Rekipellontie 15 B 005 2" [ref=e769] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e770]: Rekipellontie 15 B 005 2
+                  - 'link "Rekipellontie 15 B 005 2 Kontula-Kurkimäki, Helsinki Rent: 367€" [ref=e771] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/rekipellontie-15/242892-solu-room/
+                    - heading "Rekipellontie 15 B 005 2" [level=6] [ref=e772]
+                    - generic [ref=e773]:
+                      - paragraph [ref=e774]: Kontula-Kurkimäki, Helsinki
+                      - paragraph [ref=e775]: "Rent: 367€"
+              - generic [ref=e776]:
+                - generic [ref=e777]: Available now
+                - img "Rekipellontie 15 B 007 3" [ref=e780]
+                - generic [ref=e781]:
+                  - button "Rekipellontie 15 B 007 3" [ref=e782] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e783]: Rekipellontie 15 B 007 3
+                  - 'link "Rekipellontie 15 B 007 3 Kontula-Kurkimäki, Helsinki Rent: 366€" [ref=e784] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/rekipellontie-15/242901-solu-room/
+                    - heading "Rekipellontie 15 B 007 3" [level=6] [ref=e785]
+                    - generic [ref=e786]:
+                      - paragraph [ref=e787]: Kontula-Kurkimäki, Helsinki
+                      - paragraph [ref=e788]: "Rent: 366€"
+              - generic [ref=e789]:
+                - generic [ref=e790]: Available now
+                - img "Selkämerenkatu 6 A 012 1" [ref=e793]
+                - generic [ref=e794]:
+                  - button "Selkämerenkatu 6 A 012 1" [ref=e795] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e796]: Selkämerenkatu 6 A 012 1
+                  - 'link "Selkämerenkatu 6 A 012 1 Jätkäsaari-Ruoholahti, Helsinki Rent: 449€" [ref=e797] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/selkamerenkatu-6-santakuja-3/243509-solu-room/
+                    - heading "Selkämerenkatu 6 A 012 1" [level=6] [ref=e798]
+                    - generic [ref=e799]:
+                      - paragraph [ref=e800]: Jätkäsaari-Ruoholahti, Helsinki
+                      - paragraph [ref=e801]: "Rent: 449€"
+              - generic [ref=e802]:
+                - generic [ref=e803]: Available now
+                - img "Selkämerenkatu 6 A 012 2" [ref=e806]
+                - generic [ref=e807]:
+                  - button "Selkämerenkatu 6 A 012 2" [ref=e808] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e809]: Selkämerenkatu 6 A 012 2
+                  - 'link "Selkämerenkatu 6 A 012 2 Jätkäsaari-Ruoholahti, Helsinki Rent: 455€" [ref=e810] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/selkamerenkatu-6-santakuja-3/243510-solu-room/
+                    - heading "Selkämerenkatu 6 A 012 2" [level=6] [ref=e811]
+                    - generic [ref=e812]:
+                      - paragraph [ref=e813]: Jätkäsaari-Ruoholahti, Helsinki
+                      - paragraph [ref=e814]: "Rent: 455€"
+              - generic [ref=e815]:
+                - generic [ref=e816]: Available now
+                - img "Leppäsuonkatu 9b B 032 1" [ref=e819]
+                - generic [ref=e820]:
+                  - button "Leppäsuonkatu 9b B 032 1" [ref=e821] [cursor=pointer]:
+                    - generic:
+                      - img
+                    - generic [ref=e822]: Leppäsuonkatu 9b B 032 1
+                  - 'link "Leppäsuonkatu 9b B 032 1 Kamppi, Helsinki Rent: 473€" [ref=e823] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/housing/leppasuonkatu-9/381167-solu-room/
+                    - heading "Leppäsuonkatu 9b B 032 1" [level=6] [ref=e824]
+                    - generic [ref=e825]:
+                      - paragraph [ref=e826]: Kamppi, Helsinki
+                      - paragraph [ref=e827]: "Rent: 473€"
+          - generic [ref=e829]:
+            - generic [ref=e830]:
+              - heading "News" [level=3] [ref=e831]
+              - generic [ref=e832]:
+                - article "Message visibility issue fixed in MyHoas" [ref=e833]:
+                  - generic [ref=e834]:
+                    - link "Message visibility issue fixed in MyHoas" [ref=e835] [cursor=pointer]:
+                      - /url: https://hoas.fi/en/2026/01/16/message-visibility-issue-in-myhoas/
+                      - heading "Message visibility issue fixed in MyHoas" [level=4] [ref=e836]
+                    - link "News" [ref=e837] [cursor=pointer]:
+                      - /url: https://hoas.fi/en/category/news/
+                    - generic [ref=e838]: 16.1.2026
+                  - 'link "Update 19.1.2026: System error has been fixed and all messages can be read in MyHoas.…" [ref=e840] [cursor=pointer]':
+                    - /url: https://hoas.fi/en/2026/01/16/message-visibility-issue-in-myhoas/
+                    - paragraph [ref=e842]: "Update 19.1.2026: System error has been fixed and all messages can be read in MyHoas.…"
+                - 'article "Housing advisor explains: Apologizing costs nothing" [ref=e843]':
+                  - generic [ref=e844]:
+                    - 'link "Housing advisor explains: Apologizing costs nothing" [ref=e845] [cursor=pointer]':
+                      - /url: https://hoas.fi/en/2025/12/19/housing-advisor-explains-apologizing-costs-nothing/
+                      - 'heading "Housing advisor explains: Apologizing costs nothing" [level=4] [ref=e846]'
+                    - link "News" [ref=e847] [cursor=pointer]:
+                      - /url: https://hoas.fi/en/category/news/
+                    - generic [ref=e848]: 19.12.2025
+                  - link "In this article series, a Hoas housing advisor introduces one of the Safely together principles – what…" [ref=e850] [cursor=pointer]:
+                    - /url: https://hoas.fi/en/2025/12/19/housing-advisor-explains-apologizing-costs-nothing/
+                    - paragraph [ref=e852]: In this article series, a Hoas housing advisor introduces one of the Safely together principles – what…
+                - article "Read the newsletter" [ref=e853]:
+                  - generic [ref=e854]:
+                    - link "Read the newsletter" [ref=e855] [cursor=pointer]:
+                      - /url: https://hoas.fi/en/2025/12/15/read-the-newsletter/
+                      - heading "Read the newsletter" [level=4] [ref=e856]
+                    - link "News" [ref=e857] [cursor=pointer]:
+                      - /url: https://hoas.fi/en/category/news/
+                    - generic [ref=e858]: 15.12.2025
+                  - link "Our tenant newsletter is published four times a year, in March, June, September and December.…" [ref=e860] [cursor=pointer]:
+                    - /url: https://hoas.fi/en/2025/12/15/read-the-newsletter/
+                    - paragraph [ref=e862]: Our tenant newsletter is published four times a year, in March, June, September and December.…
+            - link "More news" [ref=e864] [cursor=pointer]:
+              - /url: https://hoas.fi/en/category/news/
+    - contentinfo [ref=e865]:
+      - generic [ref=e866] [cursor=pointer]: Back to top ▲
+      - generic [ref=e868]:
+        - link "Hoas to frontpage" [ref=e870] [cursor=pointer]:
+          - /url: https://hoas.fi/en/
+          - img [ref=e872]
+        - generic [ref=e881]:
+          - generic [ref=e882]:
+            - heading "Contact information" [level=2] [ref=e883]
+            - paragraph
+            - paragraph [ref=e884]: Foundation for student housing in the Helsinki region (Hoas)
+            - paragraph [ref=e885]:
+              - text: Pohjoinen Rautatiekatu 29 A
+              - text: PL 799
+              - text: 00101 HELSINKI
+              - text: Tel. 09 5499 00
+              - link "Opening hours and contacts" [ref=e886] [cursor=pointer]:
+                - /url: https://hoas.fi/en/contact/contact-details-and-opening-hours/
+            - paragraph
+          - generic [ref=e887]:
+            - heading "Shortcuts" [level=2] [ref=e888]
+            - paragraph
+            - paragraph [ref=e889]:
+              - link "How do I apply for student housing?" [ref=e890] [cursor=pointer]:
+                - /url: https://hoas.fi/en/applicants/how-to-apply-for-a-hoas-apartment/
+            - paragraph [ref=e891]:
+              - link "Services for Hoas tenant" [ref=e892] [cursor=pointer]:
+                - /url: https://hoas.fi/en/tenants/services/
+            - paragraph [ref=e893]:
+              - link "Residential areas" [ref=e894] [cursor=pointer]:
+                - /url: https://hoas.fi/en/areas/
+            - paragraph [ref=e895]:
+              - link "Apartment types" [ref=e896] [cursor=pointer]:
+                - /url: https://hoas.fi/en/applicants/#types
+            - paragraph [ref=e897]:
+              - link "Homes for exchange students" [ref=e898] [cursor=pointer]:
+                - /url: https://hoas.fi/en/applicants/exchange-students/
+            - paragraph
+          - generic [ref=e899]:
+            - heading "Services" [level=2] [ref=e900]
+            - paragraph
+            - paragraph [ref=e901]:
+              - link "Housing application" [ref=e902] [cursor=pointer]:
+                - /url: https://hoas.fi/en/housing-application/
+            - paragraph [ref=e903]:
+              - link "Applicant services for Exchange students" [ref=e904] [cursor=pointer]:
+                - /url: https://apply.hoas.fi
+            - paragraph [ref=e905]:
+              - link "MyHoas – Tenant services" [ref=e906] [cursor=pointer]:
+                - /url: https://living.hoas.fi
+            - paragraph [ref=e907]:
+              - link "Forms" [ref=e908] [cursor=pointer]:
+                - /url: https://hoas.fi/en/online-services/
+            - paragraph [ref=e909]
+            - paragraph
+        - generic [ref=e912]:
+          - heading "Social media" [level=2] [ref=e914]
+          - generic [ref=e915]:
+            - link "facebook" [ref=e916] [cursor=pointer]:
+              - /url: https://www.facebook.com/hoashelsinki/
+              - img [ref=e918]
+            - link "instagram" [ref=e922] [cursor=pointer]:
+              - /url: https://www.instagram.com/hoas_fi/
+              - img [ref=e924]
+            - link "youtube" [ref=e927] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCFtPEChRJc-Y9_gteWroWxA
+              - img [ref=e929]
+      - generic [ref=e933]:
+        - generic [ref=e934]: Copyright © 2026 Foundation for student housing in the Helsinki region Hoas
+        - generic [ref=e935]:
+          - link "Accessibility" [ref=e936] [cursor=pointer]:
+            - /url: https://hoas.fi/en/accessibility/
+          - link "Cookies" [ref=e937] [cursor=pointer]:
+            - /url: https://hoas.fi/en/cookies/
+          - link "Privacy policy" [ref=e938] [cursor=pointer]:
+            - /url: https://hoas.fi/en/privacy-policy/
+          - link "Notification channel" [ref=e939] [cursor=pointer]:
+            - /url: https://hoas.fi/en/notification-channel/
+  - iframe [ref=e940]:
+    
+  - status [ref=e941]
+  - region:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - paragraph [ref=e944]: Hoas Chatbot
+            - button "Close interaction" [ref=e945] [cursor=pointer]: ✕
+            - generic [ref=e947]:
+              - paragraph [ref=e948]: Hi! I'm your AI assistant,
+              - paragraph [ref=e949]: how can I help you?
+            - paragraph [ref=e952] [cursor=pointer]:
+              - text: Our customer service agents are also available on weekdays from 10 am to 3 pm.
+              - link "Click here" [ref=e953]:
+                - /url: https://hoas.fi/en/contact/online-services/how-the-hoas-chat-works/
+              - text: for more information on how the Hoas chat works.
+            - img [ref=e954]
+            - button [ref=e955] [cursor=pointer]
+            - button "Open Whatsapp" [ref=e956] [cursor=pointer]
+            - button [ref=e957] [cursor=pointer]
+            - button [ref=e958] [cursor=pointer]
