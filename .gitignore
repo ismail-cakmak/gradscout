@@ -120,6 +120,7 @@ path/
 
 # Pipeline state: keep folder structure, ignore contents
 .state/*
+!.state/pipeline-state.md
 !.state/.gitkeep
 !.state/discovery/
 !.state/extraction/
