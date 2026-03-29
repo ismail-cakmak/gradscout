@@ -1,0 +1,62 @@
+[
+  {
+    "program_name": "Business Innovation",
+    "url": "https://kandidat.au.dk/erhvervsoekonomi/business-innovation",
+    "status": "done"
+  },
+  {
+    "program_name": "Business Intelligence",
+    "url": "https://kandidat.au.dk/businessintelligence",
+    "status": "done"
+  },
+  {
+    "program_name": "Commercial and Retail Management",
+    "url": "https://kandidat.au.dk/retailmanagement/",
+    "status": "done"
+  },
+  {
+    "program_name": "Digital Business Management",
+    "url": "https://kandidat.au.dk/digitalbusinessmanagement",
+    "status": "pending"
+  },
+  {
+    "program_name": "Finance",
+    "url": "https://kandidat.au.dk/finance",
+    "status": "pending"
+  },
+  {
+    "program_name": "Finance and International Business",
+    "url": "https://kandidat.au.dk/financeandinternationalbusiness",
+    "status": "pending"
+  },
+  {
+    "program_name": "Innovation Management",
+    "url": "https://kandidat.au.dk/innovationmanagement",
+    "status": "pending"
+  },
+  {
+    "program_name": "International Business",
+    "url": "https://kandidat.au.dk/internationalbusiness",
+    "status": "pending"
+  },
+  {
+    "program_name": "Management Accounting and Control",
+    "url": "https://kandidat.au.dk/managementaccountingandcontrol",
+    "status": "pending"
+  },
+  {
+    "program_name": "Strategic Value Chain Management",
+    "url": "https://kandidat.au.dk/businesstobusiness/",
+    "status": "done"
+  },
+  {
+    "program_name": "Strategy, Organisation and Leadership",
+    "url": "https://kandidat.au.dk/strategyorganisationandleadership",
+    "status": "pending"
+  },
+  {
+    "program_name": "Technology-based Business Development",
+    "url": "https://kandidat.au.dk/technologybasedbusinessdevelopment",
+    "status": "pending"
+  }
+]

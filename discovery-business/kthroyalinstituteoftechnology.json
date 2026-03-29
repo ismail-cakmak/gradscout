@@ -1,0 +1,22 @@
+[
+  {
+    "program_name": "MSc ICT Innovation",
+    "url": "https://www.kth.se/en/studies/master/ict-innovation",
+    "status": "pending"
+  },
+  {
+    "program_name": "MSc ICT Innovation (EIT Digital)",
+    "url": "https://www.kth.se/en/studies/master/ict-innovation-eit",
+    "status": "pending"
+  },
+  {
+    "program_name": "MSc Industrial Management",
+    "url": "https://www.kth.se/en/studies/master/industrial-management",
+    "status": "pending"
+  },
+  {
+    "program_name": "MSc Technology-based Entrepreneurship",
+    "url": "https://www.kth.se/en/studies/master/technology-based-entrepreneurship",
+    "status": "pending"
+  }
+]

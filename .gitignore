@@ -118,15 +118,7 @@ Thumbs.db
 # placeholder path dir
 path/
 
-# Pipeline state: keep folder structure, ignore contents
-.state/*
-!.state/pipeline-state.md
-!.state/.gitkeep
-!.state/discovery/
-!.state/extraction/
-.state/discovery/*
-!.state/discovery/.gitkeep
-.state/extraction/*
-!.state/extraction/.gitkeep.playwright-cli/
+# Pipeline state: runtime artifacts only
+.state/
 
 .playwright-cli

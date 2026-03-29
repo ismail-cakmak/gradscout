@@ -1,0 +1,27 @@
+[
+  {
+    "program_name": "MSc Programme in Management, Organization and Society",
+    "url": "https://www.su.se/english/education/course-catalogue/sm/smoso",
+    "status": "pending"
+  },
+  {
+    "program_name": "MSc Programme in Operations Management and Control",
+    "url": "https://www.su.se/english/education/course-catalogue/sv/svoso",
+    "status": "pending"
+  },
+  {
+    "program_name": "MSc Programme in Accounting and Management Control",
+    "url": "https://www.su.se/english/education/course-catalogue/sr/sreko",
+    "status": "pending"
+  },
+  {
+    "program_name": "MSc Programme in Banking and Finance",
+    "url": "https://www.su.se/english/education/course-catalogue/sb/sbofo",
+    "status": "pending"
+  },
+  {
+    "program_name": "MSc Programme in IT Project Management",
+    "url": "https://www.su.se/english/education/course-catalogue/s/sprom",
+    "status": "pending"
+  }
+]

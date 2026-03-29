@@ -1,0 +1,27 @@
+[
+  {
+    "program_name": "Business Administration",
+    "url": "https://www.utwente.nl/en/education/master/programmes/business-administration/",
+    "status": "pending"
+  },
+  {
+    "program_name": "Business Information Technology",
+    "url": "https://www.utwente.nl/en/education/master/programmes/business-information-technology/",
+    "status": "pending"
+  },
+  {
+    "program_name": "Construction Management & Engineering",
+    "url": "https://www.utwente.nl/en/education/master/programmes/construction-management-engineering/",
+    "status": "pending"
+  },
+  {
+    "program_name": "Environmental & Energy Management",
+    "url": "https://www.utwente.nl/en/education/master/programmes/environmental-energy-management/",
+    "status": "pending"
+  },
+  {
+    "program_name": "Industrial Engineering & Management",
+    "url": "https://www.utwente.nl/en/education/master/programmes/industrial-engineering-management/",
+    "status": "pending"
+  }
+]

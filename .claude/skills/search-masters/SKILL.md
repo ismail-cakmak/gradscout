@@ -54,11 +54,12 @@ Check if `.state/pipeline-state.md` exists.
 - If NO: This is a **fresh run**. Create it. Add Phase 1 checkboxes (`[ ] Intake`, `[ ] Context Generation`, `[ ] Baseline Search`). Skip Step 1.5 and go to Step 2.
 - If YES: Read the file and also read `master-context.md`.
   - If the user's message is about **updating criteria** (adding/removing keywords, countries, schema fields, etc.), go to **Step 1.5**.
-  - Otherwise, determine which phase to resume:
-    1. If there are ANY unchecked `[ ]` items in **Phase 2**, resume from Step 4 (Discovery). **Do NOT skip ahead to Phase 3 even if Phase 3 items exist.**
-    2. If all Phase 2 items are checked and there are unchecked `[ ]` items in **Phase 3**, resume from Step 5 (Extraction).
-    3. If all Phase 2 and Phase 3 items are checked, go to Step 6 (Compilation).
+  - Otherwise, scan the `## Universities` section to determine next action:
+    1. If any university has `[ ][ ]` (discovery not done), resume from Step 4 (Discovery).
+    2. If any university has `[x][ ]` (discovery done, extraction pending), resume from Step 5 (Extraction).
+    3. If all universities are `[x][x]`, go to Step 6 (Compilation).
     4. If Phase 1 items are unchecked, resume from the corresponding step.
+  - **Important:** The state file only has university-level checkboxes. Per-program status lives in the discovery JSON files (`.state/discovery/*.json`) under the `"status"` field.
 
 
 ### Step 1.5: Criteria Update Flow
@@ -72,21 +73,21 @@ Check if `.state/pipeline-state.md` exists.
 
    **Tier 1 — Additive (append only, keep all existing work):**
    - Adding a new **country** → keep all existing universities; just run Step 3 for the new country, then Steps 4-5-6 for the new additions
-   - Adding a new **negative keyword** → filter existing `.state/discovery/*.json` files and remove programs matching the new negative keyword; delete their corresponding `.state/extraction/*.json` files; uncheck removed programs in pipeline-state.md
+   - Adding a new **negative keyword** → filter existing `.state/discovery/*.json` files and remove programs matching the new negative keyword; delete their corresponding `.state/extraction/*.json` files; reset the `"status"` of removed programs in the discovery JSON
    - Removing a **country** → remove universities from that country from pipeline-state.md and delete their discovery/extraction files
 
    **Tier 2 — Schema Change (nuke extraction, keep discovery):**
-   - Adding/removing/modifying a **schema field** (e.g., adding `language_of_instruction`) → all existing `.state/extraction/*.json` files are invalid because they are missing the new field. **Delete all files in `.state/extraction/`**. Uncheck all Phase 3 items in pipeline-state.md (set back to `[ ]`). Discovery results are still valid.
+   - Adding/removing/modifying a **schema field** → all existing `.state/extraction/*.json` files are invalid. **Delete all files in `.state/extraction/`**. Reset all program statuses to `"pending"` in every `.state/discovery/*.json` file. Set the second checkbox of every university in pipeline-state.md back to `[ ]` (i.e., `[x][ ]`). Discovery results are still valid.
 
    **Tier 3 — Keyword Change (full re-run):**
-   - Adding/removing an **interest keyword** → existing universities may have matching programs that were previously filtered out. **Delete all files in both `.state/discovery/` and `.state/extraction/`**. Reset pipeline-state.md: uncheck all Phase 2 and Phase 3 items (set back to `[ ]`). Phase 1 stays checked. If countries also changed, also re-run Step 3.
+   - Adding/removing an **interest keyword** → existing universities may have matching programs that were previously filtered out. **Delete all files in both `.state/discovery/` and `.state/extraction/`**. Reset pipeline-state.md: set all universities to `[ ][ ]`. Phase 1 stays checked. If countries also changed, also re-run Step 3.
 
 4. **Confirm with User:** Tell the user which tier applies, what will be invalidated, and what will be kept. Ask for confirmation before proceeding.
 
 5. **Execute Invalidation:** Once confirmed:
    - Update `master-context.md` with the new criteria.
-   - Delete the appropriate files and uncheck the appropriate items in `pipeline-state.md` according to the tier.
-   - Resume the pipeline from the first unchecked `[ ]` in `pipeline-state.md` (i.e., go to Step 1 and let it find the resume point).
+   - Delete the appropriate files and reset the appropriate checkboxes/statuses according to the tier.
+   - Resume the pipeline by going to Step 1 to find the next action.
 
 
 ### Step 2: The Intake & Context Generation
@@ -120,11 +121,11 @@ Check if `.state/pipeline-state.md` exists.
 
 2. Strict Ranking Filter: You must evaluate the Rank Cutoff for these universities using ONLY the QS World University Rankings or Times Higher Education (THE). Ignore national rankings, ARWU, US News, etc. If a university falls outside the cutoff on both QS and THE, discard it.
 
-3. Update .state/pipeline-state.md to create a "Phase 2: Discovery" section. List every single qualifying university with an empty [ ] checkbox.
+3. Update `.state/pipeline-state.md` to create a `## Universities` section. List every qualifying university with two empty checkboxes: `- [ ][ ] University Name (Country)`.
 
-### Step 4: Phase 2 Delegation (The Finders) — PARALLEL
+### Step 4: Discovery Delegation (The Finders) — PARALLEL
 
-Look at the Phase 2 checklist in `.state/pipeline-state.md`.
+Look at the `## Universities` section in `.state/pipeline-state.md` for universities with `[ ][ ]` (first checkbox unchecked).
 
 1. **Parallel Execution:** You may dispatch **multiple `program-finder` subagents in parallel**. Each subagent gets a unique session name to ensure full browser isolation.
 
@@ -137,7 +138,7 @@ Look at the Phase 2 checklist in `.state/pipeline-state.md`.
 
 4. **Batching:** Dispatch universities in batches (e.g., 3–5 at a time) to avoid overwhelming system resources. Wait for the batch to complete before dispatching the next batch.
 
-5. **Collect Results:** Once each agent returns, compile the JSON links into `.state/discovery/universityname.json`, and check off `[x]` (or `[FAILED]` if it fails) in the state file.
+5. **Collect Results:** Once each agent returns, save the results to `.state/discovery/universityname.json`. Each program entry must include `"status": "pending"`. Update the first checkbox to `[x]` in the state file (i.e., `[ ][ ]` → `[x][ ]`).
 
 6. **Cleanup:** After each batch completes, run:
    ```bash
@@ -145,31 +146,29 @@ Look at the Phase 2 checklist in `.state/pipeline-state.md`.
    ```
    This ensures no stale browser sessions linger between batches.
 
-7. **CRITICAL: Do NOT create Phase 3 entries or start any extraction work during this step. Complete ALL Phase 2 universities before moving to Step 5.**
+### Step 5: Extraction Delegation (The Analyzers) — PARALLEL
 
-### Step 5: Phase 3 Setup & Delegation (The Analyzers) — PARALLEL
+Look at the `## Universities` section for universities with `[x][ ]` (discovery done, extraction pending).
 
-**Prerequisite:** Verify that ALL Phase 2 items are `[x]` or `[FAILED]`. If any Phase 2 item is still `[ ]`, go back to Step 4. Do NOT start Phase 3 until Phase 2 is fully complete.
+**For each university with `[x][ ]`:**
 
-1. Read the Descriptive JSON Schema and the list of discovered program URLs from ALL `.state/discovery/*.json` files.
-2. Update .state/pipeline-state.md to create a "Phase 3: Extraction" section, listing every program URL with an empty [ ] box next to it. This is your queue for the analyzers.
+1. **Load Programs:** Read ONLY that university's `.state/discovery/universityname.json`. Filter for programs with `"status": "pending"`.
 
-3. **Parallel Execution:** You may dispatch **multiple `program-analyzer` subagents in parallel**. Each subagent gets a unique session name.
+2. **Skip if none:** If no programs are `"pending"`, mark the university as `[x][x]` and move to the next.
 
-4. **Session Naming:** For each program, generate a session name: `prog-<sanitized-uni>-<sanitized-program>` (e.g., `prog-tum-cs`, `prog-eth-ml`). Keep it short but unique.
+3. **Session Naming:** For each program, generate a session name: `prog-<sanitized-uni>-<sanitized-program>` (e.g., `prog-tum-cs`, `prog-eth-ml`). Keep it short but unique.
 
-5. **Dispatch:** For each unchecked program, invoke the `Agent` tool with the `program-analyzer` subagent. Include:
-   - The URL, Program Name, University Name, and the Descriptive JSON Schema
+4. **Dispatch:** For each pending program, invoke the `Agent` tool with the `program-analyzer` subagent. Include:
+   - The URL, Program Name, University Name, and the Descriptive JSON Schema from `master-context.md`
    - **The session name**, e.g.: "Your SESSION_NAME is `prog-tum-cs`. Use `-s=prog-tum-cs` for every playwright-cli command."
 
-6. **Batching:** Dispatch programs in batches (e.g., 3–5 at a time). Wait for the batch to complete before the next batch.
+5. **Batching:** Dispatch programs in batches (e.g., 3–5 at a time). Wait for the batch to complete before the next batch.
 
-7. **Collect Results:** Check off `[x]` (or `[FAILED]`) in the state file after each agent completes.
+6. **Update Status:** After each analyzer returns:
+   - Update the program's `"status"` in the discovery JSON to `"done"` or `"failed"`.
+   - Once ALL programs for this university are non-pending (`"done"` or `"failed"`), mark the university as `[x][x]` in `pipeline-state.md`.
 
-8. **Cleanup:** After each batch:
-   ```bash
-   playwright-cli close-all
-   ```
+7. **Move to next university:** Proceed to the next `[x][ ]` university.
 
 
 ### Step 6: Compilation

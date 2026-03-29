@@ -1,0 +1,2 @@
+- playwright cli / playwrigh mcp / chrome dev tool
+- subagent lar işlem yaptıklarından sonra nasıl dönüyorlar? main orchestrator a mı contentleri veriyor yoksa kendileri mi gidip jsonları oluşturuyorlar?
