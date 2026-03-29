@@ -1,8 +1,8 @@
 # 🎓 GradScout
 
-**An AI-powered Claude Code skill that researches master's programs for you.**
+**A Crawl4AI-powered Claude Code skill that researches master's programs for you.**
 
-Tell it your countries, your interests, your criteria — and it autonomously browses university websites, gathers program details, and delivers a structured Excel spreadsheet.
+Tell it your countries, your interests, your criteria — and it autonomously crawls university websites, gathers program details, and delivers a structured Excel spreadsheet.
 
 > **What's a Claude Code skill?** It's a reusable set of instructions that teaches [Claude Code](https://docs.anthropic.com/en/docs/claude-code) how to perform a complex, multi-step task. Install this skill once, and Claude becomes your personal graduate school researcher.
 
@@ -70,7 +70,7 @@ The agent figures out what needs to be re-processed and what can be kept, then p
                ▼
 ┌─────────────────────────────┐
 │  🔍  Finder Agent           │
-│  Browses each university's  │
+│  Crawls each university's   │
 │  website, finds matching    │
 │  program URLs               │
 └──────────────┬──────────────┘
@@ -100,7 +100,6 @@ Every step is checkpointed in `.state/pipeline-state.md`. If anything crashes or
 ### Prerequisites
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed
-- Node.js & npx
 - Python 3.x
 
 ### Installation
@@ -111,14 +110,14 @@ git clone https://github.com/YOUR_USERNAME/gradscout.git
 cd gradscout
 ```
 
-**2. Add browser automation**
+**2. Install Python dependencies**
 ```bash
-claude mcp add playwright -- npx -y @playwright/mcp@latest
+pip install -r requirements.txt
 ```
 
-**3. Install Python dependencies**
+**3. Install Crawl4AI browser runtime**
 ```bash
-pip install pandas openpyxl
+crawl4ai-setup
 ```
 
 **4. Run it**
@@ -144,6 +143,7 @@ gradscout/
 │   ├── discovery/                 # Found program URLs (JSON)
 │   └── extraction/                # Extracted program data (JSON)
 ├── CLAUDE.md                      # Project rules for Claude
+├── fetch_page.py                  # Crawl4AI helper for content + link extraction
 ├── compile_results.py             # Merges JSONs → Excel
 └── README.md
 ```

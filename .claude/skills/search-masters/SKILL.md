@@ -1,6 +1,6 @@
 ---
 name: search-masters
-description: Orchestrates the master's program search pipeline using browser automation. Use when the user says "find master programs", "research universities", "run the master search", "update my criteria", "add a keyword", "add a country", "change my search", or "modify my filters".
+description: Orchestrates the master's program search pipeline using Crawl4AI-backed web crawling. Use when the user says "find master programs", "research universities", "run the master search", "update my criteria", "add a keyword", "add a country", "change my search", or "modify my filters".
 disable-model-invocation: true
 ---
 # Master's Search Orchestrator
@@ -18,18 +18,12 @@ Execute these steps strictly in sequence. You must manage state using `.state/pi
 ### Step 0: Global Dependency Validation
 *(Execute every time before Step 1)*
 
-1. **Clean Up Stale Sessions:** Kill any leftover browser sessions from a previous run:
+1. **Crawl4AI Check:** Run:
    ```bash
-   playwright-cli close-all 2>/dev/null || true
+   python3 -c "import crawl4ai; print(getattr(crawl4ai, '__version__', 'installed'))"
    ```
-
-2. **Playwright CLI Check:** Run:
-   ```bash
-   playwright-cli --version
-   ```
-   - **If it fails:** Try `npx playwright-cli --version`.
-   - **If both fail:** Warn the user: "⚠️ The Playwright CLI is missing. Please install it: `npm install -g @playwright/cli` or use `npx @playwright/cli install --skills`."
-   - **Do not proceed** until the CLI is confirmed working.
+   - **If it fails:** Warn the user: "⚠️ Crawl4AI is missing. Please install it with `pip install crawl4ai` and then run `crawl4ai-setup`."
+   - **Do not proceed** until Crawl4AI is confirmed working.
    
 2. **Check Python Environment:** Use the `bash` tool to run: 
    `python3 -c "import os, json, pandas, openpyxl; print('Dependencies OK')"`
@@ -37,14 +31,14 @@ Execute these steps strictly in sequence. You must manage state using `.state/pi
    - **Action:** Tell the user: "⚠️ Python dependencies missing. Please run: `pip install pandas openpyxl`".
    - **Stop:** Do not proceed to Step 1 until the user confirms installation.
 
-3. **Check Directory Structure:** Ensure `.state/discovery` and `.state/extraction` exist.
-   - **Action:** If missing, run `mkdir -p .state/discovery .state/extraction`.
-
-4. **Launch Visual Dashboard:** Open the Playwright CLI visual dashboard so the user can observe all parallel browser sessions in real time:
+3. **Helper Smoke Test:** Run:
    ```bash
-   playwright-cli show &
+   python3 fetch_page.py "https://example.com" --max-chars=200
    ```
-   This runs in the background and displays a live view of every running session. The user can watch the agents work and even step in if needed.
+   - **If it fails:** Tell the user to complete Crawl4AI setup with `crawl4ai-setup` before continuing.
+
+4. **Check Directory Structure:** Ensure `.state/discovery` and `.state/extraction` exist.
+   - **Action:** If missing, run `mkdir -p .state/discovery .state/extraction`.
 
 5. **Proceed:** Only if all checks pass, move to Step 1.
 
@@ -117,7 +111,7 @@ Check if `.state/pipeline-state.md` exists.
 
 (Execute only if unchecked)
 
-1. Use your built-in web search or `playwright-cli` to find a baseline list of universities matching the user's target countries.
+1. Use your built-in web search to find a baseline list of universities matching the user's target countries.
 
 2. Strict Ranking Filter: You must evaluate the Rank Cutoff for these universities using ONLY the QS World University Rankings or Times Higher Education (THE). Ignore national rankings, ARWU, US News, etc. If a university falls outside the cutoff on both QS and THE, discard it.
 
@@ -127,24 +121,18 @@ Check if `.state/pipeline-state.md` exists.
 
 Look at the `## Universities` section in `.state/pipeline-state.md` for universities with `[ ][ ]` (first checkbox unchecked).
 
-1. **Parallel Execution:** You may dispatch **multiple `program-finder` subagents in parallel**. Each subagent gets a unique session name to ensure full browser isolation.
+1. **Parallel Execution:** You may dispatch **multiple `program-finder` subagents in parallel**. Each subagent gets a unique Crawl4AI session ID to ensure isolated crawl state.
 
 2. **Session Naming:** For each university, generate a session name: `uni-<sanitized-name>` (e.g., `uni-tum`, `uni-eth-zurich`, `uni-oxford`). Sanitize by lowercasing and replacing spaces/special chars with hyphens.
 
 3. **Dispatch:** For each unchecked university, invoke the `Agent` tool with the `program-finder` subagent. In the task description, include:
    - The University Name and its website URL
    - The Interest Keywords and Negative Keywords
-   - **The session name**, e.g.: "Your SESSION_NAME is `uni-tum`. Use `-s=uni-tum` for every playwright-cli command."
+   - **The session name**, e.g.: "Your SESSION_NAME is `uni-tum`. Use `--session=uni-tum` on every `python3 fetch_page.py` crawl."
 
 4. **Batching:** Dispatch universities in batches (e.g., 3–5 at a time) to avoid overwhelming system resources. Wait for the batch to complete before dispatching the next batch.
 
 5. **Collect Results:** Once each agent returns, save the results to `.state/discovery/universityname.json`. Each program entry must include `"status": "pending"`. Update the first checkbox to `[x]` in the state file (i.e., `[ ][ ]` → `[x][ ]`).
-
-6. **Cleanup:** After each batch completes, run:
-   ```bash
-   playwright-cli close-all
-   ```
-   This ensures no stale browser sessions linger between batches.
 
 ### Step 5: Extraction Delegation (The Analyzers) — PARALLEL
 
@@ -160,7 +148,7 @@ Look at the `## Universities` section for universities with `[x][ ]` (discovery 
 
 4. **Dispatch:** For each pending program, invoke the `Agent` tool with the `program-analyzer` subagent. Include:
    - The URL, Program Name, University Name, and the Descriptive JSON Schema from `master-context.md`
-   - **The session name**, e.g.: "Your SESSION_NAME is `prog-tum-cs`. Use `-s=prog-tum-cs` for every playwright-cli command."
+   - **The session name**, e.g.: "Your SESSION_NAME is `prog-tum-cs`. Use `--session=prog-tum-cs` on every `python3 fetch_page.py` crawl."
 
 5. **Batching:** Dispatch programs in batches (e.g., 3–5 at a time). Wait for the batch to complete before the next batch.
 
@@ -178,25 +166,16 @@ Once all Phase 3 boxes are checked, run the terminal command python compile_resu
 
 ## Troubleshooting
 
-### Playwright CLI Not Found
+### Crawl4AI Not Found
 
-If `playwright-cli` is not found:
-1. Try `npx playwright-cli --version` to use the npx fallback.
-2. If that also fails, ask the user to install: `npm install -g @playwright/cli`.
-
-### Stale / Zombie Browser Sessions
-
-If browsers become unresponsive or sessions are left open from a previous run:
-```bash
-playwright-cli list        # see what's running
-playwright-cli close-all   # graceful shutdown
-playwright-cli kill-all    # force kill if close-all fails
-```
+If `crawl4ai` is not importable or `fetch_page.py` fails on simple pages:
+1. Ask the user to install: `pip install crawl4ai`
+2. Then ask them to run: `crawl4ai-setup`
+3. Retry the helper smoke test: `python3 fetch_page.py "https://example.com" --max-chars=200`
 
 ### Subagent Timeout or Crash
 
 If a program-analyzer or program-finder subagent fails to return data or throws a critical error:
 
 1. Note the failure in .state/pipeline-state.md (e.g., mark as [FAILED]).
-2. Run `playwright-cli close-all` to clean up any orphaned sessions.
-3. Do not get stuck in an infinite retry loop. Move on to the next empty [ ] checkbox in the queue.
+2. Do not get stuck in an infinite retry loop. Move on to the next empty [ ] checkbox in the queue.
