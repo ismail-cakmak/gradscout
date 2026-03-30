@@ -45,6 +45,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--wait-for")
     parser.add_argument("--css-selector")
     parser.add_argument("--page-timeout-ms", type=int, default=30000)
+    parser.add_argument("--no-wait", action="store_true", help="Skip waiting for networkidle")
     return parser.parse_args()
 
 
@@ -150,7 +151,7 @@ async def run_crawl(args: argparse.Namespace) -> dict[str, Any]:
                 "session_id": args.session,
                 "wait_for": args.wait_for,
                 "css_selector": args.css_selector,
-                "wait_until": "networkidle",
+                "wait_until": None if args.no_wait else "networkidle",
                 "page_timeout": args.page_timeout_ms,
                 "scan_full_page": True,
                 "process_iframes": True,

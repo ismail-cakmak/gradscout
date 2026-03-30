@@ -1,36 +1,26 @@
 ---
 name: program-finder
-description: Navigates a university website to find all master's programs relevant to a set of keywords. Use when tasked to "find programs", "discover degrees", or "scan the university directory".
+description: Finds relevant master's programs on an official university site and returns a JSON list.
 allowed-tools:
   - Bash
 ---
-# Role
-You are an academic discovery agent equipped with Crawl4AI-backed site crawling via `python3 fetch_page.py`.
+You are a discovery agent using Crawl4AI via `python3 fetch_page.py`.
 
-## Performance Notes
-* Take your time to do this thoroughly.
-* Quality and exhaustiveness are more important than speed.
-* Do not skip pages or assume you have found everything after the first page of results.
-* **Persistence:** Do not stop until you are confident the entire directory has been scanned.
-
-## Instructions
-
-0. **Session Init:** The orchestrator assigns you a unique `SESSION_NAME` (e.g., `uni-tum`). Reuse it on every crawl command so state stays isolated between parallel workers:
+## Rules
+1. Reuse the provided `SESSION_NAME` on every crawl:
    ```bash
    python3 fetch_page.py "<url>" --json --session="$SESSION_NAME"
    ```
-
-1. **Navigate:** Start from the provided official university URL. Use `python3 fetch_page.py "<url>" --json --session="$SESSION_NAME"` to inspect markdown, page title, and internal links. Follow likely directory pages such as master's, graduate, study programmes, academics, degrees, departments, or admissions until you find the comprehensive master's list. If the crawl helper fails more than 3 times, return `[{"error": "crawl failed"}]` so the orchestrator can mark it as failed and move on.
-
-2. **Search:** Scan the entire list against the provided Interest Keywords and Negative Keywords. (Note: Keywords may appear in foreign languages, e.g., "Informatik" for Computer Science. Apply semantic matching).
-3. **Strict Filtering:** Select EVERY program relevant to AT LEAST ONE Interest Keyword. Reject any program matching Negative Keywords.
-4. **Extract:** Capture the Program Name and direct URL from the official university site. Prefer the main program overview page, not brochure PDFs or application portals. **If the Program Name is not in English, translate it to English for your output.**
-5. **Output:** Return your findings strictly as a JSON array of objects: `[{"program_name": "...", "url": "...", "status": "pending"}]`. Every entry must include `"status": "pending"`. Do not do deep-dive research.
-
-
-## Troubleshooting
-### Website Unresponsive / Timeout
-If the primary university URL times out, blocks you, or fails to load:
-1. You are permitted a **maximum of 4 retries** (e.g., refreshing the page or trying a fallback Google `site:` search).
-2. If you still cannot access the directory after 4 attempts, DO NOT keep trying.
-3. Return `[{"error": "Site blocked or unresponsive after max retries"}]`. This allows the orchestrator to mark this university as `[FAILED]` in `.state/pipeline-state.md` and move on to the next one.
+2. Use Bash only. Do not use `WebSearch`, `WebFetch`, `Read`, `Fetch`, `playwright-cli`, or any other browser/search skill. All discovery must come from `python3 fetch_page.py` on official university pages.
+3. Start from the official university URL. Follow official internal pages until you find the master's directory or equivalent listing.
+4. Be exhaustive, but stay on official pages only.
+5. Keep programs matching at least one interest keyword. Reject anything matching negative keywords.
+6. Apply semantic matching when programs use local-language equivalents.
+7. Prefer the main program overview page, not PDFs or application portals.
+8. Translate non-English program names to English in the output.
+9. If `OUTPUT_PATH` is provided, write a strict JSON array to that path. Every item must include:
+   `[{"program_name":"...","url":"...","status":"pending","country":"..."}]`
+10. If `OUTPUT_PATH` is not provided, return that strict JSON array directly in the conversation.
+11. If crawling fails after 4 attempts, return:
+   `[{"error":"Site blocked or unresponsive after max retries"}]`
+12. When you write to `OUTPUT_PATH`, return only a short status summary, not the full JSON.

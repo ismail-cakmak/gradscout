@@ -93,6 +93,11 @@ The agent figures out what needs to be re-processed and what can be kept, then p
 
 Every step is checkpointed in `.state/pipeline-state.md`. If anything crashes or you close your terminal, just run the skill again — it resumes exactly where it left off.
 
+The orchestrator now relies on local state helpers instead of hand-editing status in the prompt:
+- `python3 get_pending_extraction_batch.py --limit=5` returns the next analyzer chunk
+- `python3 sync_state.py` reconciles extraction files back into discovery JSON plus pipeline state
+- `python3 sync_pipeline_state.py` refreshes university-level checkboxes after discovery waves
+
 ---
 
 ## Setup
@@ -110,17 +115,33 @@ git clone https://github.com/YOUR_USERNAME/gradscout.git
 cd gradscout
 ```
 
-**2. Install Python dependencies**
+**2. Create and activate a virtualenv**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+**3. Install Python dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-**3. Install Crawl4AI browser runtime**
+**4. Install Crawl4AI browser runtime**
 ```bash
+export PLAYWRIGHT_BROWSERS_PATH=.playwright
 crawl4ai-setup
 ```
 
-**4. Run it**
+`crawl4ai-setup` may warn about `sudo` on some Linux systems. The project works with a local browser install:
+
+```bash
+PLAYWRIGHT_BROWSERS_PATH=.playwright python -m playwright install chromium
+PLAYWRIGHT_BROWSERS_PATH=.playwright python -m patchright install chromium
+```
+
+Crawl4AI uses Playwright/Patchright as its browser runtime. The search workers should still access pages through `python3 fetch_page.py`, not through direct browser/search tools.
+
+**5. Run it**
 ```bash
 claude
 ```

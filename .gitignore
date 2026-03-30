@@ -121,4 +121,5 @@ path/
 # Pipeline state: runtime artifacts only
 .state/
 
+.playwright/
 .playwright-cli
